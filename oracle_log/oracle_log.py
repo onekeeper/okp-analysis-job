@@ -1,4 +1,4 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
 """
@@ -65,7 +65,7 @@ class getlog(multiprocessing.Process,item):
         diff_nums=[]
 	match_nums=[]
         config=ConfigParser.ConfigParser()
-        config.read(mainpath+'/exam.ini')
+        config.read(os.path.join(mainpath, 'exam.ini'))
         config.sections()
 	custom_db=self.db
 	orauser=custom_db[3]
@@ -248,12 +248,12 @@ def p_monitor(queue,job_num):
 	    elif round((date-dict[pid])/sleep_time,1)>=2.0:
 	        logging.warning('%s,ERRO,OVERTIME:%d\n'%(pid,date-dict[pid]-sleep_time))
 	    elif round((date-dict[pid]),1)==0.0:
-	        pass 
+	        pass
 	    elif round((date-dict[pid])/sleep_time,1)==1.0:
 		pass
 	    dict[pid]=date
 	else:
-	    pass 
+	    pass
 	time.sleep(600)
 def justone():
     load_times=1
@@ -266,11 +266,11 @@ def justone():
 if __name__ == "__main__":
     mul=[]
     queue= multiprocessing.Queue()
-    lock=multiprocessing.Lock() 
+    lock=multiprocessing.Lock()
     config=ConfigParser.ConfigParser()
-    mainpath=os.getcwd()
+    mainpath=os.path.dirname(__file__)
     sys.path.append(mainpath)
-    config.read(mainpath+'/exam.ini')
+    config.read(os.path.join(mainpath, 'exam.ini'))
     mtime=config.getint('Main','time')
     alter_log_file=mainpath+config.get('Main','alter_log_file')
     jobs=config.items('job_time')
@@ -315,7 +315,7 @@ if __name__ == "__main__":
 	m.daemon = True
 	m.start()
     ckpt.daemon = True
-    ckpt.start() 
+    ckpt.start()
     for i in range(mtime/10):
 	if ckpt.is_alive() is True:
 	    pass

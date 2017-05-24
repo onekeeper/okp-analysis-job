@@ -20,9 +20,9 @@ import sys
 def ConnectOracle():
     # 读取配置信息
     config = ConfigParser.ConfigParser()
-    curPath = os.getcwd()
+    curPath = os.path.dirname(__file__)
     #print curPath
-    config.read(curPath + '/param.ini')
+    config.read(os.path.join(curPath, 'param.ini'))
     host_id = config.get("oracle_db","host")
     port = config.get("oracle_db","port")
     username = config.get("oracle_db","user")

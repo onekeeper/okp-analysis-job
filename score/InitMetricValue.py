@@ -7,6 +7,7 @@
 # Version: 1.0
 # Usage:
 ###############################################################################
+import os
 import pymysql
 import cx_Oracle
 import time,datetime
@@ -17,7 +18,7 @@ import oracle_handle
 import mysql_handle
 import ErlangC
 
-logging.config.fileConfig('logging.conf')
+logging.config.fileConfig(os.path.join(os.path.dirname(__file__), 'logging.conf'))
 logger = logging.getLogger('init')
 
 ###############################################################################
@@ -188,8 +189,8 @@ def InitExecThreshold(ora_conn, mysql_conn, inst_id):
     # 计算解析cpu的erlangC的到达率
     if  exec_time or exec_count == None:
         exec_time=1
-        exec_count=1000 
-    time_per_count = float('%0.3f' % (float(exec_time) / float(exec_count) / 1000)) 
+        exec_count=1000
+    time_per_count = float('%0.3f' % (float(exec_time) / float(exec_count) / 1000))
     logger.debug("time_per_count: " + str(time_per_count))
 
     #Temporary solved set time_per_count=0.9 if its value >= 1

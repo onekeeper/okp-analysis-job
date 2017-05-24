@@ -1,3 +1,6 @@
 #!/bin/bash
+SOURCE_FILE="${BASH_SOURCE[0]}"
+SOURCE_DIR=$(dirname $SOURCE_FILE)
 
-python3 zabbix_sync.py &
+cd $SOURCE_DIR
+python zabbix_sync.py

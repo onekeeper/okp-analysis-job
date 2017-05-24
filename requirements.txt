@@ -1,0 +1,4 @@
+cx-Oracle==5.3
+ibm-db==2.0.7
+PyMySQL==0.7.11
+uniout==0.3.7

@@ -13,7 +13,7 @@ import ibm_db
 
 import logging.config
 
-logging.config.fileConfig('logging.conf')
+logging.config.fileConfig(os.path.join(os.path.dirname(__file__), 'logging.conf'))
 logger = logging.getLogger('GenMetric')
 
 #################################################################################################
@@ -511,7 +511,7 @@ def Get_System(db2_conn, mysql_conn, system_name):
 # main function
 ###############################################################################
 if __name__=="__main__":
-    logging.config.fileConfig('logging.conf')
+    logging.config.fileConfig(os.path.join(os.path.dirname(__file__), 'logging.conf'))
     logger = logging.getLogger('GenMetric')
 
     db2_conn = db2_handle.ConnectDB2()

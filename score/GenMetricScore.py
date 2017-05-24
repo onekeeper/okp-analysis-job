@@ -10,7 +10,7 @@
 import time,datetime
 import multiprocessing
 import traceback
-
+import os
 import logging
 import logging.config
 
@@ -35,7 +35,7 @@ import InitMetricValue as IMV
 
 import ReWriteScore as RWS
 
-logging.config.fileConfig('logging.conf')
+logging.config.fileConfig(os.path.join(os.path.dirname(__file__), 'logging.conf'))
 logger = logging.getLogger('GenMetric')
 ###############################################################################
 # functions
@@ -336,7 +336,7 @@ def GenRacScore(mysql_conn, inst_id, snap_id):
     if res_rac_1 == 1 and res_rac_2 == 1 :
 	res_rac_f1 = GFS.GenLevel3forecast(mysql_conn, inst_id, snap_id, 'rac_ksxp')
 	res_rac_f2= GFS.GenLevel3forecast(mysql_conn, inst_id, snap_id, 'rac_busy')
-	
+
 	if res_rac_1 == 1 and res_rac_2 == 1  and \
                         res_rac_f1 == 1 and res_rac_f2 == 1 :
             logger.info('Generate rac Score succss.')

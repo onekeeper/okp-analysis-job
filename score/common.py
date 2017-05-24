@@ -17,7 +17,7 @@ import mysql_handle
 import logging
 import logging.config
 
-logging.config.fileConfig('logging.conf')
+logging.config.fileConfig(os.path.join(os.path.dirname(__file__), 'logging.conf'))
 logger = logging.getLogger('GenMetric')
 ###############################################################################
 # define functions

@@ -21,9 +21,9 @@ import sys
 def ConnectMysql(dbname = None):
         # 读取配置信息
         config = ConfigParser.ConfigParser()
-        curPath = os.getcwd()
+        curPath = os.path.dirname(__file__)
         # print curPath
-        config.read(curPath + '/param.ini')
+        config.read(os.path.join(curPath, 'param.ini'))
         host_id = config.get("mysql_db", "host")
         port = config.getint("mysql_db", "port")
         username = config.get("mysql_db", "user")
@@ -42,9 +42,9 @@ def ConnectMysql(dbname = None):
 def ConnectHzmcData():
     # 读取配置信息
     config = ConfigParser.ConfigParser()
-    curPath = os.getcwd()
-    #print curPath
-    config.read(curPath + '/param.ini')
+    curPath = os.path.dirname(__file__)
+    # print curPath
+    config.read(os.path.join(curPath, 'param.ini'))
     host_id = config.get("hzmc_data","host")
     port = config.getint("hzmc_data","port")
     username = config.get("hzmc_data","user")
