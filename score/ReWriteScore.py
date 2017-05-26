@@ -22,7 +22,7 @@ import mysql_handle
 def ReWriteScore(mysql_conn, object_id, inst_id, snap_id):
     try:
         # 建立总览库mysql连接
-        mysql_hzmcdata = mysql_handle.ConnectHzmcData()
+        mysql_hzmcdata = mysql_handle.ConnectMysql()
 
         # 查询需要更新的 model score
         query_str = """select sys_id,table_name from aop_model_score where object_id = '%s' """ % (object_id)

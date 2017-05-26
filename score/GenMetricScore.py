@@ -408,7 +408,11 @@ if __name__ == "__main__":
     pool = multiprocessing.Pool(multiprocessing.cpu_count() / 2)
 
     mysql_maindb = mysql_handle.ConnectMysql('hzmc_data')
-    query_str = """select * from aop_loadinfo"""
+    query_str = """select dbname, inst_id,
+                          snap_id, oraconn,
+                          mysqlconn, object_id,
+                          status
+                     from aop_loadinfo"""
     res_list = mysql_handle.GetMultiValue(mysql_maindb, query_str)
     mysql_handle.CloseMysql(mysql_maindb)
 

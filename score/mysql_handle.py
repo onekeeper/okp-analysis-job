@@ -38,25 +38,6 @@ def ConnectMysql(dbname = None):
         except Exception, e:
             print(e)
 
-# 连接数据库
-def ConnectHzmcData():
-    # 读取配置信息
-    config = ConfigParser.ConfigParser()
-    curPath = os.path.dirname(__file__)
-    # print curPath
-    config.read(os.path.join(curPath, 'param.ini'))
-    host_id = config.get("hzmc_data","host")
-    port = config.getint("hzmc_data","port")
-    username = config.get("hzmc_data","user")
-    password = config.get("hzmc_data","passwd")
-    dbname = config.get("hzmc_data","db")
-
-    # 打开数据库连接
-    try:
-        return pymysql.connect(host=host_id, user=username, passwd=password, port=port, db=dbname, charset='utf8')
-    except Exception, e:
-        print(e)
-
 def CloseMysql(con):
     # 关闭数据库连接
     if con:
